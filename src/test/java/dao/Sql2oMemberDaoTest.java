@@ -43,4 +43,11 @@ public class Sql2oMemberDaoTest {
         memberDao.add(member);
         assertEquals(1, memberDao.getAll().size());
     }
+    @Test
+    public void findIdReturnsCorrectId_True() throws Exception {
+        Member member1 = testMember1();
+        memberDao.add(member1);
+        Member newBoy = memberDao.findId(member1.getId());
+        assertNotEquals(member1, newBoy);
+    }
 }

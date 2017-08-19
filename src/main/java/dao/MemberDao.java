@@ -12,6 +12,8 @@ public interface MemberDao {
     List<Member> getAll();
 
     ///..update..///
+    Member findId(int id);
+
     ///..delete..///
 
 

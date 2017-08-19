@@ -41,4 +41,13 @@ public class Sql2oMemberDao implements MemberDao {
         }
     }
 
+    @Override
+    public Member findId(int id){
+        try (Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM members WHERE id = :id")
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Member.class);
+        }
+    }
+
 }
