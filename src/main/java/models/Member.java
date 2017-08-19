@@ -36,8 +36,8 @@ public class Member {
 
         if (id != member.id) return false;
         if (memId != member.memId) return false;
-        if (!name.equals(member.name)) return false;
-        return contact.equals(member.contact);
+        if (contact != member.contact) return false;
+        return name.equals(member.name);
     }
 
     @Override

@@ -48,6 +48,6 @@ public class Sql2oMemberDaoTest {
         Member member1 = testMember1();
         memberDao.add(member1);
         Member newBoy = memberDao.findId(member1.getId());
-        assertNotEquals(member1, newBoy);
+        assertEquals(member1, newBoy);
     }
 }
