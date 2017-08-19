@@ -45,4 +45,12 @@ public class Sql2oBouquetDao implements BouquetDao{
                     .executeAndFetch(Bouquet.class);
         }
     }
+    @Override
+    public Bouquet findByBouquetId(int id) {
+        try (Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM bouquets WHERE id = :id")
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Bouquet.class);
+        }
+    }
 }

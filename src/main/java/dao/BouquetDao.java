@@ -13,7 +13,9 @@ public interface BouquetDao {
     ///..read..///
     List<Member> getAllBouquetMembers(int memId);
     List<Bouquet> getAll();
+    Bouquet findByBouquetId(int id);
 
     ///..update..///
+
     ///..delete..///
 }
