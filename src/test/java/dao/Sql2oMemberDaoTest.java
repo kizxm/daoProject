@@ -75,7 +75,7 @@ public class Sql2oMemberDaoTest {
         memberDao.add(member2);
         int total = memberDao.getAll().size();
         memberDao.deleteMembers();
-        assertFalse(total > 0 && total > memberDao.getAll().size());
+        assertTrue(total > 0 && total > memberDao.getAll().size());
     }
 
 
