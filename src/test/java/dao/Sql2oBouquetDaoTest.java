@@ -92,6 +92,21 @@ public class Sql2oBouquetDaoTest {
         bouquetDao.deleteAllBouquets();
         assertTrue(total > 0 && total > bouquetDao.getAll().size());
     }
+    @Test
+    public void allTeamsAndMembersReturned_True() throws Exception {
+        Bouquet team1 = bouquetTeam1();
+        bouquetDao.add(team1);
+        int bouquetId = team1.getId();
+        Member member1 = new Member("Harrison", bouquetId);
+        Member member2 = new Member("Allison", bouquetId);
+        Member member3 = new Member("Bob", bouquetId);
+        memberDao.add(member1);
+        memberDao.add(member2);
+        assertTrue(bouquetDao.getAllBouquetMembers(bouquetId).size() == 2);
+        assertTrue(bouquetDao.getAllBouquetMembers(bouquetId).contains(member1));
+        assertFalse(bouquetDao.getAllBouquetMembers(bouquetId).contains(member2));
+
+    }
 
 }
 
