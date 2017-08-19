@@ -74,8 +74,15 @@ public class Sql2oBouquetDaoTest {
         bouquetDao.update(team1.getId(), "John's Team", "John made a team too");
         Bouquet secondTeam = bouquetDao.findByBouquetId(team1.getId());
         assertNotEquals(firstName, secondTeam.getTeamName());
-
     }
+    @Test
+    public void deleteByBouquetIdDeletes_True() throws Exception {
+        Bouquet team1 = bouquetTeam1();
+        bouquetDao.add(team1);
+        bouquetDao.deleteByBouquetId(team1.getId());
+        assertEquals(1, bouquetDao.getAll().size());
+    }
+
 
 }
 

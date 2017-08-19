@@ -19,4 +19,5 @@ public interface BouquetDao {
     void update(int id, String name, String description);
 
     ///..delete..///
+    void deleteByBouquetId(int id);
 }
