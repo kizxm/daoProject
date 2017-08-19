@@ -60,7 +60,13 @@ public class Sql2oMemberDaoTest {
         assertNotEquals(first, second.getName());
 
     }
-
+    @Test
+    public void deleteByIdReturns_True() throws Exception {
+        Member member1 = testMember1();
+        memberDao.add(member1);
+        memberDao.deleteId(member1.getId());
+        assertEquals(1, memberDao.getAll().size());
+    }
 
 
 

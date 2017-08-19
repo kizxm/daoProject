@@ -16,7 +16,7 @@ public interface MemberDao {
     void update(int id, String name, int memId);
 
     ///..delete..///
-
+    void deleteId(int id);
 
 
 
