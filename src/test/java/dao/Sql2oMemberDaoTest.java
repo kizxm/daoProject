@@ -50,4 +50,19 @@ public class Sql2oMemberDaoTest {
         Member newBoy = memberDao.findId(member1.getId());
         assertEquals(member1, newBoy);
     }
+    @Test
+    public void updateUpdates_Correctly() throws Exception {
+        String first = "Herbert";
+        Member member = new Member(first, 1); //hard-assigning a member an id
+        memberDao.add(member);
+        memberDao.update(member.getId(),"Astrid", 1);
+        Member second = memberDao.findId(member.getId());
+        assertEquals(first, second.getName());
+
+    }
+
+
+
+
+
 }

@@ -13,6 +13,7 @@ public interface MemberDao {
 
     ///..update..///
     Member findId(int id);
+    void update(int id, String name, int memId);
 
     ///..delete..///
 
