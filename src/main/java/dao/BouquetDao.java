@@ -20,4 +20,5 @@ public interface BouquetDao {
 
     ///..delete..///
     void deleteByBouquetId(int id);
+    void deleteAllBouquets();
 }

@@ -77,4 +77,14 @@ public class Sql2oBouquetDao implements BouquetDao{
             System.out.println(ex);
         }
     }
+    @Override
+    public void deleteAllBouquets() {
+        String sql = "DELETE from bouquets";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .executeUpdate();
+        }catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+    }
 }

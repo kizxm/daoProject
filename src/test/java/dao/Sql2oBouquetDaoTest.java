@@ -82,7 +82,16 @@ public class Sql2oBouquetDaoTest {
         bouquetDao.deleteByBouquetId(team1.getId());
         assertEquals(0, bouquetDao.getAll().size());
     }
-
+    @Test
+    public void deleteAllBouquetsDeletesAll_True() throws Exception{
+        Bouquet team1 = bouquetTeam1();
+        Bouquet team2 = bouquetTeam2();
+        bouquetDao.add(team1);
+        bouquetDao.add(team2);
+        int total = bouquetDao.getAll().size();
+        bouquetDao.deleteAllBouquets();
+        assertFalse(total > 0 && total > bouquetDao.getAll().size());
+    }
 
 }
 
