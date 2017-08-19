@@ -2,56 +2,53 @@ package models;
 
 import java.util.ArrayList;
 
-public class Team {
+public class Bouquet {
     private String teamName;
-    private String descName;
-    private String memberName;
-
+    private String teamDesc;
     private int id;
-    private static ArrayList<Team> allFlowers = new ArrayList<Team>();
 
-    public Team(String teamName, String descName, String memberName) {
+
+    public Bouquet(String teamName, String teamDesc) {
         this.teamName = teamName;
-        this.descName = descName;
-        this.memberName = memberName;
-        allFlowers.add(this);
-        this.id = allFlowers.size();
-    }
-
-    public void update(String teamName, String descName, String memberName) {
-        this.teamName = teamName;
-        this.descName = descName;
-        this.memberName = memberName;
-    }
-
-    public static Team findById(int id){
-        return allFlowers.get(id-1);
-    }
-    public int getId() {
-        return id;
+        this.teamDesc = teamDesc;
     }
 
 
-
-
-    public static void clearAllFlowers() {
-        allFlowers.clear();
-    }
-
-    public static ArrayList<Team> getAll() {
-        return allFlowers;
-    }
-
-    /// getters //////
-    public String getteamName() {
-        return teamName;
-    }
-    public String getdescName() {
-        return descName;
-    }
-    public String getmemberName() { return memberName; }
-    public static ArrayList<Team> getAllFlowers() {
-        return allFlowers;
-    }
-    ////////////////
+    ///..getters & setters..///
+    public String getTeamName() { return teamName; }
+    public void setTeamName(String teamName) { this.teamName = teamName; }
+    public String getTeamDesc() { return teamDesc; }
+    public void setTeamDesc(String teamDesc) { this.teamDesc = teamDesc; }
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+    ///....................///
 }
+
+
+
+
+
+    ///..Obsolete from previous generation..///
+    ///..Placed in order of removal..///
+    //    private String flower3;
+    //    private String flower4;
+    //    private static ArrayList<Bouquet> allFlowers = new ArrayList<Bouquet>();
+    //
+    //    allFlowers.add(this);
+    //    this.id = allFlowers.size();
+    //    public void update(String flower1, String flower2, String flower3, String flower4) {
+    //        this.flower1 = flower1;
+    //        this.flower2 = flower2;
+    //        this.flower3 = flower3;
+    //        this.flower4 = flower4;
+    //    }
+    //        public static Bouquet findById(int id){
+    //        return allFlowers.get(id-1)}
+    //        public int getId() {return id;}
+    //        public static void clearAllFlowers(){allFlowers.clear();}
+    //        public static ArrayList<Bouquet> getAll() {return allFlowers;}
+    //        public String getFlower1() {return flower1;}
+    //        public String getFlower2() {return flower2;}
+    //        public String getFlower3() {return flower3;}
+    //        public String getFlower4() {return flower4;}
+    //        public static ArrayList<Bouquet> getAllFlowers() {return allFlowers;}

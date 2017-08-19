@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class TeamTest {
+public class BouquetTest {
     @Before
     public void setUp() throws Exception {
     }
@@ -15,51 +15,49 @@ public class TeamTest {
     public void tearDown() throws Exception {
     }
 
-    public Team newArrangement() {
-        return new Team("rose", "lily", "harrison, alice, bob");
+    public Bouquet newArrangement() {
+        return new Bouquet("rose", "lily", "daisy", "gerbera");
     }
 
-    public Team newArrangement2() {
-        return new Team("sunflower", "dandelion", "george, kim, bob");
+    public Bouquet newArrangement2() {
+        return new Bouquet("sunflower", "dandelion", "poppy", "thistle");
     }
 
     @Test
     public void instantiatesCorrectly() throws Exception {
-        Team newFlower = newArrangement();
-        assertEquals(true, newFlower instanceof Team);
+        Bouquet newFlower = newArrangement();
+        assertEquals(true, newFlower instanceof Bouquet);
     }
 
     @Test
     public void countsBouquetInstancesCorrectly() throws Exception {
-        Team.clearAllFlowers();
-        Team newFlower = newArrangement();
-        Team newFlower2 = newArrangement2();
-        assertEquals(2, Team.getAllFlowers().size());
+        Bouquet.clearAllFlowers();
+        Bouquet newFlower = newArrangement();
+        Bouquet newFlower2 = newArrangement2();
+        assertEquals(2, Bouquet.getAllFlowers().size());
     }
 
     @Test
     public void bouquetInstantiatesWithValue_True() throws Exception {
-        Team.clearAllFlowers();
-        Team newFlower = newArrangement();
-        assertEquals("rose", newFlower.getteamName());
+        Bouquet.clearAllFlowers();
+        Bouquet newFlower = newArrangement();
+        assertEquals("rose", newFlower.getFlower1());
     }
 
     @Test
     public void allFlowersContainsAllFlowers_True() throws Exception {
-        Team newFlower = newArrangement();
-        Team newFlower2 = newArrangement2();
-        assertTrue(Team.getAll().contains(newFlower));
-        assertTrue(Team.getAll().contains(newFlower2));
+        Bouquet newFlower = newArrangement();
+        Bouquet newFlower2 = newArrangement2();
+        assertTrue(Bouquet.getAll().contains(newFlower));
+        assertTrue(Bouquet.getAll().contains(newFlower2));
     }
     @Test
     public void updateChangesPostContent() throws Exception {
-        Team newFlower = newArrangement();
-        String oldContent = newFlower.getteamName();
+        Bouquet newFlower = newArrangement();
+        String oldContent = newFlower.getFlower1();
         int formerId = newFlower.getId();
-        newFlower.update("tulip", "willow", "john, smith, kat");
+        newFlower.update("tulip", "willow", "dandelion", "none");
         assertEquals(formerId, newFlower.getId());
-        assertNotEquals(oldContent, newFlower.getteamName());
+        assertNotEquals(oldContent, newFlower.getFlower1());
     }
 }
-
-
