@@ -1,52 +1,47 @@
-# Bouquet Maker
-✿✿✿✿✿✿✿✿✿✿✿
+# Tech Conference
+✦✦✦✦✦✦✦✦✦✦✦✦
 
-#### Bouquet Maker August 11, 2017
-✿✿✿✿✿✿✿✿✿✿
+#### Tech Conference August 18, 2017
+✦✦✦✦✦✦✦✦✦✦✦✦
 
 #### By Kira Loo
-✿✿✿✿✿✿✿✿✿✿
+✦✦✦✦✦✦✦✦✦✦✦✦
 
 ## Description
-✿✿✿✿✿✿✿✿✿✿
+✦✦✦✦✦✦✦✦✦✦✦✦
 
-_This website allows the user to enter in desired flowers in a form and return them as a list, (bouquet), to switch between pages it uses GET & POST methods in Java._
-
-![Alt text](/screenshot.png)
-
-
-_Video Avaliable as Well:_
-[![Alt text](/movie.png)](https://youtu.be/3n3NYL9mZJk)
+_This website allows the user to create a new Team for a Tech Conference, you can add members to your team or change your team's name and description._
 
 ## Setup/Installation Requirements
-✿✿✿✿✿✿✿✿✿✿
+✦✦✦✦✦✦✦✦✦✦✦✦
 
 You will need Gradle installed on your device.
 
-* ->❁ Clone the repo from git hub.
-* ->❁ Open in your favorite editor
-* ->❁ Run the App
-* ->❁ Checkout the Website on your localhost:4567 !
+* ->✦ Clone the repo from git hub.
+* ->✦ Open in your favorite editor
+* ->✦ Run the App
+* ->✦ Checkout the Website on your localhost:4567 !
 
 ## Specifications
-✿✿✿✿✿✿✿✿✿✿
+✦✦✦✦✦✦✦✦✦✦✦✦
 
-| ❀ Behavior      | ❀ Example Input      | ❀ Example Output       |
+| ✦ Behavior      | ✦ Example Input      | ✦ Example Output       |
 | ------------- | ------------- | ------------- |
-|Enter in the type of Bouquet you'd like | Daisy, Lily, Rose, Sunflower | Primary Flower: Daisy, Secondary Flower: Lily, Additional Flower: Rose, Additional Flower: Sunflower|
+|Enter in the name & description of your team | name: "Cool Team", description: "Very Cool" |name: "Cool Team", description: "Very Cool"|
 | ------------- | ------------- | ------------- |
-|Edit the Previous Bouquet | (no change), (no change), Tulip, (no change)| Primary Flower: Daisy, Secondary Flower: Lily, Additional Flower: Tulip, Additional Flower: Sunflower|
+|Edit the Previous Team | name: (no change), description: "Even more cool."| name: "Cool Team", description: "Even more Cool."|
 | ------------- | ------------- | ------------- |
-| View all Bouquets | Click to view all | Primary Flower: Daisy, Secondary Flower: Lily, Additional Flower: Tulip, Additional Flower: Sunflower --
- Primary Flower: Gerbera, Secondary Flower: Dandelion, Additional Flower: Thistle, Additional Flower: None
+| Delete a Team | Delete | -deleted- |
+| Add a Member  | New Member Name: "John"| team name: "Cool Team", description: "Even more Cool", Member: "John"|
+| Delete a Member | Click John -> Delete| -John is deleted-|
 
 ## Known Bugs
-✿✿✿✿✿✿✿✿✿✿
+✦✦✦✦✦✦✦✦✦✦✦✦
 
-_No known bugs._
+_Currently wip._
 
 ## Technologies Used
-✿✿✿✿✿✿✿✿✿✿
+✦✦✦✦✦✦✦✦✦✦✦✦
 
 * _IntelliJ_
 * _Java_
@@ -55,5 +50,5 @@ _No known bugs._
 
 
 ### License
-✿✿✿✿✿✿✿✿✿✿
+✦✦✦✦✦✦✦✦✦✦✦✦
 Copyright &copy; 2017 _Kira Loo_
