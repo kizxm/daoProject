@@ -51,7 +51,7 @@ public class Sql2oBouquetDaoTest {
     public void getAllFromBouquetsEquals_1() throws Exception {
         Bouquet team1 = bouquetTeam1();
         bouquetDao.add(team1);
-        assertEquals(2, bouquetDao.getAll().size());
+        assertEquals(1, bouquetDao.getAll().size());
     }
 }
 
