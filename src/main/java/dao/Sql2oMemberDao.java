@@ -36,7 +36,7 @@ public class Sql2oMemberDao implements MemberDao {
     @Override
     public List<Member> getAll() {
         try(Connection con = sql2o.open()){
-            return con.createQuery("SELECT * FROM members2")
+            return con.createQuery("SELECT * FROM members")
                     .executeAndFetch(Member.class);
         }
     }

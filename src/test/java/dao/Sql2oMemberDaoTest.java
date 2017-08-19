@@ -37,10 +37,10 @@ public class Sql2oMemberDaoTest {
         assertNotEquals(first, member1.getId());
     }
 
-//    @Test
-//    public void getAllAddsMembers_1() throws Exception {
-//        Member member = testMember1();
-//        memberDao.add(member);
-//        assertEquals(2, memberDao.getAll().size());
-//    }
+    @Test
+    public void getAllAddsMembers_1() throws Exception {
+        Member member = testMember1();
+        memberDao.add(member);
+        assertEquals(2, memberDao.getAll().size());
+    }
 }
