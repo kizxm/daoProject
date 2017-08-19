@@ -1,31 +1,25 @@
 {{#partial "content"}}
 
-    {{#if allFlowers}}
+    {{#if teams}}
+        {{#each teams}}
 
-        {{#each allFlowers}}
+            <center>
 
-            <h3>Primary Flower:</h3><p> {{flower1}}</p><hr>
-
-
-            <h3>Secondary Flower:</h3><p> {{flower2}}</p><hr>
-
-
-            <h3>Additional Flower:</h3><p> {{flower3}}</p><hr>
-
-
-            <h3>Additional Flower:</h3><p> {{flower4}}</p><hr>
-
-            <br><p><a href="/flowers/{{id}}"> read more...</a></p>
+            <h2><ul>Team Name:</ul></h2><p> {{teamName}}</p><hr>
+            <h5>Description of your Team:</h5><p> {{teamDesc}}</p><hr>
+            <br><p><a href="/teams/{{id}}"> read more...</a></p>
             <br>
+            </center>
 
 
 
 
         {{/each}}
     {{else}}
-        <center>
-            <p>No Bouquets made!</p>
-        </center>
+            <br>
+            <br>
+            <p>No Teams Created!</p>
+
     {{/if}}
 {{/partial}}
 
