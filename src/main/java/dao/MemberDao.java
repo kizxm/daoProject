@@ -1,11 +1,19 @@
 package dao;
+import models.Member;
+import java.util.List;
 
 public interface MemberDao {
 
-        ///..create..///
-        ///..read..///
-        ///..update..///
-        ///..delete..///
+
+    ///..create..///
+    void add (Member member);
+
+    ///..read..///
+    List<Member> getAll();
+
+    ///..update..///
+    ///..delete..///
+
 
 
 
