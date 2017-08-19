@@ -61,13 +61,22 @@ public class Sql2oMemberDaoTest {
 
     }
     @Test
-    public void deleteByIdReturns_True() throws Exception {
+    public void deleteByIdReturns_0() throws Exception {
         Member member1 = testMember1();
         memberDao.add(member1);
         memberDao.deleteId(member1.getId());
         assertEquals(0, memberDao.getAll().size());
     }
-
+    @Test
+    public void deleteMembersRetuns_0() throws Exception {
+        Member member1 = testMember1();
+        Member member2 = testMember2();
+        memberDao.add(member1);
+        memberDao.add(member2);
+        int total = memberDao.getAll().size();
+        memberDao.deleteMembers();
+        assertFalse(total > 0 && total > memberDao.getAll().size());
+    }
 
 
 
