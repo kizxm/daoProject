@@ -104,7 +104,7 @@ public class Sql2oBouquetDaoTest {
         memberDao.add(member2);
         assertTrue(bouquetDao.getAllBouquetMembers(bouquetId).size() == 2);
         assertTrue(bouquetDao.getAllBouquetMembers(bouquetId).contains(member1));
-        assertFalse(bouquetDao.getAllBouquetMembers(bouquetId).contains(member2));
+        assertTrue(bouquetDao.getAllBouquetMembers(bouquetId).contains(member2));
 
     }
 
