@@ -60,7 +60,10 @@ public class Sql2oBouquetDaoTest {
         Bouquet first = bouquetDao.findByBouquetId(team1.getId());
         assertEquals(team1, first);
     }
-
+    @Test
+    public void emptyFieldsReturn_True() throws Exception {
+        assertEquals(0, bouquetDao.getAll().size());
+    }
 
 }
 
