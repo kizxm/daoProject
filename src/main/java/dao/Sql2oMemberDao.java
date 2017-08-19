@@ -16,7 +16,7 @@ public class Sql2oMemberDao implements MemberDao {
 
     @Override
     public void add(models.Member member) {
-        String sql = "INSERT INTO members (name, contact, teamId) VALUES (:names, :contact, :memId)";
+        String sql = "INSERT INTO members (name, contact, memId) VALUES (:name, :contact, :memId)";
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql)
                     .addParameter("name", member.getName())
@@ -36,7 +36,7 @@ public class Sql2oMemberDao implements MemberDao {
     @Override
     public List<Member> getAll() {
         try(Connection con = sql2o.open()){
-            return con.createQuery("SELECT * FROM members")
+            return con.createQuery("SELECT * FROM members2")
                     .executeAndFetch(Member.class);
         }
     }
