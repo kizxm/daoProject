@@ -65,7 +65,7 @@ public class Sql2oMemberDaoTest {
         Member member1 = testMember1();
         memberDao.add(member1);
         memberDao.deleteId(member1.getId());
-        assertEquals(1, memberDao.getAll().size());
+        assertEquals(0, memberDao.getAll().size());
     }
 
 
