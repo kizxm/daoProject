@@ -6,6 +6,8 @@ import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 
+import java.util.List;
+
 public class Sql2oBouquetDao implements BouquetDao{
     private final Sql2o sql2o;
     public Sql2oBouquetDao(Sql2o sql2o){
@@ -26,7 +28,21 @@ public class Sql2oBouquetDao implements BouquetDao{
             bouquet.setId(id);
         } catch (Sql2oException ex){
             System.out.println(ex);
-
+        }
+    }
+    @Override
+    public List<Member> getAllBouquetMembers(int memId) {
+        try (Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM members WHERE memId = :memId")
+                    .addParameter("memId", memId)
+                    .executeAndFetch(Member.class);
+        }
+    }
+    @Override
+    public List<Bouquet> getAll() {
+        try(Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM bouquets")
+                    .executeAndFetch(Bouquet.class);
         }
     }
 }

@@ -41,11 +41,17 @@ public class Sql2oBouquetDaoTest {
     ///-------------------------------------///
 
     @Test
-    public void addMethodReturnstheSame_False() throws Exception {
+    public void addMethodReturnsTheSame_False() throws Exception {
         Bouquet team1 = bouquetTeam1();
         int first = team1.getId();
         bouquetDao.add(team1);
         assertNotEquals(first, team1.getId());
+    }
+    @Test
+    public void getAllFromBouquetsEquals_1() throws Exception {
+        Bouquet team1 = bouquetTeam1();
+        bouquetDao.add(team1);
+        assertEquals(2, bouquetDao.getAll().size());
     }
 }
 
