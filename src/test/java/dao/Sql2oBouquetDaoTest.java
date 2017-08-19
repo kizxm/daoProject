@@ -64,6 +64,18 @@ public class Sql2oBouquetDaoTest {
     public void emptyFieldsReturn_True() throws Exception {
         assertEquals(0, bouquetDao.getAll().size());
     }
+    @Test
+    public void updateMethodUpdates_Correctly() throws Exception {
+        String firstName = "Bob's Team";
+        String firstDesc = "This is bob's team";
+        Bouquet team1 = new Bouquet(firstName, firstDesc);
+        bouquetDao.add(team1);
+
+        bouquetDao.update(team1.getId(), "John's Team", "John made a team too");
+        Bouquet secondTeam = bouquetDao.findByBouquetId(team1.getId());
+        assertEquals(firstName, secondTeam.getTeamName());
+
+    }
 
 }
 
