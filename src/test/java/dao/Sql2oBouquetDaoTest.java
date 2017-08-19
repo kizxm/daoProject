@@ -80,7 +80,7 @@ public class Sql2oBouquetDaoTest {
         Bouquet team1 = bouquetTeam1();
         bouquetDao.add(team1);
         bouquetDao.deleteByBouquetId(team1.getId());
-        assertEquals(1, bouquetDao.getAll().size());
+        assertEquals(0, bouquetDao.getAll().size());
     }
 
 
