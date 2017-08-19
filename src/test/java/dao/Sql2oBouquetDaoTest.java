@@ -45,7 +45,7 @@ public class Sql2oBouquetDaoTest {
         Bouquet team1 = bouquetTeam1();
         int first = team1.getId();
         bouquetDao.add(team1);
-        assertEquals(first, team1.getId());
+        assertNotEquals(first, team1.getId());
     }
 }
 
