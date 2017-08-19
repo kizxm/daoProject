@@ -73,7 +73,7 @@ public class Sql2oBouquetDaoTest {
 
         bouquetDao.update(team1.getId(), "John's Team", "John made a team too");
         Bouquet secondTeam = bouquetDao.findByBouquetId(team1.getId());
-        assertEquals(firstName, secondTeam.getTeamName());
+        assertNotEquals(firstName, secondTeam.getTeamName());
 
     }
 
