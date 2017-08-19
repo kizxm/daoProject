@@ -90,7 +90,7 @@ public class Sql2oBouquetDaoTest {
         bouquetDao.add(team2);
         int total = bouquetDao.getAll().size();
         bouquetDao.deleteAllBouquets();
-        assertFalse(total > 0 && total > bouquetDao.getAll().size());
+        assertTrue(total > 0 && total > bouquetDao.getAll().size());
     }
 
 }
