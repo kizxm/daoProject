@@ -16,6 +16,7 @@ public interface BouquetDao {
     Bouquet findByBouquetId(int id);
 
     ///..update..///
+    void update(int id, String name, String description);
 
     ///..delete..///
 }

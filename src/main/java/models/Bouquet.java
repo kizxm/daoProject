@@ -13,6 +13,26 @@ public class Bouquet {
         this.teamDesc = teamDesc;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Bouquet bouquet = (Bouquet) o;
+
+        if (id != bouquet.id) return false;
+        if (!teamName.equals(bouquet.teamName)) return false;
+        return teamDesc.equals(bouquet.teamDesc);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = teamName.hashCode();
+        result = 31 * result + teamDesc.hashCode();
+        result = 31 * result + id;
+        return result;
+    }
+
 
     ///..getters & setters..///
     public String getTeamName() { return teamName; }

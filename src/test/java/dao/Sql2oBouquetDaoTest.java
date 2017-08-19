@@ -53,12 +53,14 @@ public class Sql2oBouquetDaoTest {
         bouquetDao.add(team1);
         assertEquals(1, bouquetDao.getAll().size());
     }
-    @Test //currently failing on my end due to DB issue with the create.sql
+    @Test
     public void bouquetsFoundByIdReturn_True() throws Exception {
         Bouquet team1 = bouquetTeam1();
         bouquetDao.add(team1);
         Bouquet first = bouquetDao.findByBouquetId(team1.getId());
-        assertEquals(first, team1);
+        assertEquals(team1, first);
     }
+
+
 }
 

@@ -53,4 +53,17 @@ public class Sql2oBouquetDao implements BouquetDao{
                     .executeAndFetchFirst(Bouquet.class);
         }
     }
+    @Override
+    public void update(int id, String updateName, String updateDesc) {
+        String sql = "UPDATE bouquets SET teamName = :teamName, teamDesc = :teamDesc WHERE id = :id";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("teamName", updateName)
+                    .addParameter("teamDesc", updateDesc)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        }catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+    }
 }
