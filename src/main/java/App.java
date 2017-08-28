@@ -30,6 +30,14 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
+        ///..get delete all teams..///
+        get("/teams/delete", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            bouquetDao.deleteAllBouquets();
+            memberDao.deleteMembers();
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
         ///..get new team form..///
         get("/teams/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -51,20 +59,22 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         ///..get read more..///
-        get("/teams/:memId", (request, response) -> {
+        get("/teams/:id", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            int idTeam = Integer.parseInt(request.params("memId"));
+            int idTeam = Integer.parseInt(request.params("id"));
             List<Bouquet> teams = bouquetDao.getAll();
             model.put("teams", teams);
             Bouquet foundTeam = bouquetDao.findByBouquetId(idTeam);
             model.put("team", foundTeam);
+            List<Member> allMembers = bouquetDao.getAllBouquetMembers(idTeam);
+            model.put("members", allMembers);
             return new ModelAndView(model, "team-detail.hbs");
         }, new HandlebarsTemplateEngine());
 
-        ///..get team update..///
-        get("/teams/update", (request, response) -> {
+        ///..get team update form..///
+        get("/teams/:teamId/update", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            int intId = Integer.parseInt(request.params("memId"));
+            int intId = Integer.parseInt(request.params("teamId"));
             model.put("teamEdit", true);
             List<Bouquet> allTeams = bouquetDao.getAll();
             model.put("teams", allTeams);
@@ -92,23 +102,15 @@ public class App {
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
-        ///..get delete all teams..///
-        get("/teams/delete", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            bouquetDao.deleteAllBouquets();
-            memberDao.deleteMembers();
-            List<Member> allMembers = memberDao.getAll();
-            List<Bouquet> allTeams = bouquetDao.getAll();
-            model.put("teams", allTeams);
-            return new ModelAndView(model, "success.hbs");
-        }, new HandlebarsTemplateEngine());
-
         ///..get delete single member..///
-        get("/members/:memberId/delete", (request, response) -> {
+        get("/teams/:id/members/:teamId/delete", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            int idMember = Integer.parseInt(request.params("memberId"));
-            Member deleteMember = memberDao.findId(idMember);
-            memberDao.deleteId(idMember);
+            int teamIdMemberDelete = Integer.parseInt(request.params("id"));
+            int idMemberDelete = Integer.parseInt(request.params("teamId"));
+            Member deleteMember = memberDao.findId(idMemberDelete);
+            memberDao.deleteId(idMemberDelete);
+            List<Member> members = memberDao.getAll();
+            model.put("members", members);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -134,96 +136,50 @@ public class App {
             model.put("teams", allTeams);
 
             String name = request.queryParams("name");
-            int memId = Integer.parseInt(request.queryParams("memId"));
-            Member member1 = new Member(name, memId);
+            int teamId = Integer.parseInt(request.queryParams("teamId"));
+            Member member1 = new Member(name, teamId);
             memberDao.add(member1);
             model.put("member", member1);
             return new ModelAndView(model, "success_2.hbs");
         }, new HandlebarsTemplateEngine());
 
         ///..get single member info..///
-        get("/members/:id", (request, response) -> {
+        get("/teams/:teamId/members/:memId", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            int idMember = Integer.parseInt(request.params("id"));
+            int idMember = Integer.parseInt(request.params("memId"));
             Member memberFind = memberDao.findId(idMember);
             model.put("member", memberFind);
             return new ModelAndView(model, "member-detail.hbs");
         }, new HandlebarsTemplateEngine());
 
         ///..get update member form..///
-        get("/teams/:memId/members/:id/update", (request, response) -> {
+        get("/teams/:id/members/:teamId/update", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             int idMember = Integer.parseInt(request.params("id"));
-            int idTeam = Integer.parseInt(request.params("memId"));
+            int idTeam = Integer.parseInt(request.params("teamId"));
             Member editMember = memberDao.findId(idMember);
-            model.put("editMember", editMember);
+            model.put("editMember", true);
             model.put("idTeam", idTeam);
             List<Member> allMembers = memberDao.getAll();
             List<Bouquet> allTeams = bouquetDao.getAll();
+            model.put("idMember", idMember);
             model.put("members", allMembers);
             model.put("teams", allTeams);
             return new ModelAndView(model, "member-form.hbs");
         }, new HandlebarsTemplateEngine());
 
         ///..post update member form..///
-        post("/teams/:memId/members/:id/update", (request, response) -> {
+        post("/teams/:id/members/:teamId/update", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             String newName = request.queryParams("name");
             int idMember = Integer.parseInt(request.params("id"));
-            int idTeam = Integer.parseInt(request.params("memId"));
+            int idTeam = Integer.parseInt(request.params("teamId"));
             Member editMember = memberDao.findId(idMember);
             memberDao.update(idMember, newName, idTeam);
             model.put("idMember", idMember);
-            return new ModelAndView(model, "sucess.hbs");
+            model.put("idTeam", idTeam);
+            return new ModelAndView(model, "success_2.hbs");
         }, new HandlebarsTemplateEngine());
-
-
-
-
-
-//        get("/flowers/new", (request, response) -> {
-//            Map<String, Object> model = new HashMap<>();
-//            return new ModelAndView(model, "flower-form.hbs");
-//        }, new HandlebarsTemplateEngine());
-//
-//        post("/flowers/new", (request, response) -> {
-//            Map<String, Object> model = new HashMap<String, Object>();
-//            String flower1 = request.queryParams("flower1");
-//            String flower2 = request.queryParams("flower2");
-//            String flower3 = request.queryParams("flower3");
-//            String flower4 = request.queryParams("flower4");
-//            Bouquet newFlower = new Bouquet(flower1, flower2, flower3, flower4);
-//            return new ModelAndView(model, "index.hbs");
-//        }, new HandlebarsTemplateEngine());
-//
-//        get("/flowers/:id", (req, res) -> {
-//            Map<String, Object> model = new HashMap<>();
-//            int idOfFlowerToFind = Integer.parseInt(req.params("id"));
-//            Bouquet flowersMade = Bouquet.findById(idOfFlowerToFind);
-//            model.put("flowers", flowersMade);
-//            return new ModelAndView(model, "flower-details.hbs");
-//        }, new HandlebarsTemplateEngine());
-//
-//        get("/flowers/:id/update", (req, res) -> {
-//            Map<String, Object> model = new HashMap<>();
-//            int idOfPostToEdit = Integer.parseInt(req.params("id"));
-//            Bouquet editFlowers = Bouquet.findById(idOfPostToEdit);
-//            model.put("editFlowers", editFlowers);
-//            return new ModelAndView(model, "flower-form.hbs");
-//        }, new HandlebarsTemplateEngine());
-//
-//        post("/flowers/:id/update", (req, res) -> {
-//            Map<String, Object> model = new HashMap<>();
-//            String flower1 = req.queryParams("flower1");
-//            String flower2 = req.queryParams("flower2");
-//            String flower3 = req.queryParams("flower3");
-//            String flower4 = req.queryParams("flower4");
-//            int idOfPostToEdit = Integer.parseInt(req.params("id"));
-//            Bouquet editFlowers = Bouquet.findById(idOfPostToEdit);
-//            editFlowers.update(flower1, flower2, flower3, flower4);
-//            return new ModelAndView(model, "index.hbs");
-//        }, new HandlebarsTemplateEngine());
-//
 
     }
 }

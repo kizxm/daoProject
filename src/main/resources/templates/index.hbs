@@ -1,27 +1,18 @@
+
 {{#partial "content"}}
 
     {{#if teams}}
-        {{#each teams}}
+        {{#each teams }}
 
-            <center>
-
-            <h2><ul>Team Name:</ul></h2><p> {{teamName}}</p><hr>
-            <h5>Description of your Team:</h5><p> {{teamDesc}}</p><hr>
-            <br><p><a href="/teams/{{id}}"> read more...</a></p>
-            <br>
-            </center>
-
-
-
-
+            <p><strong>Team name:</strong> {{teamName}}</p>
+            <p><strong>Description:</strong> {{teamDesc}}</p>
+                <p>{{ name }} <a href="/teams/{{id}}">read more...</a></p>
+<hr noshade>
         {{/each}}
     {{else}}
-            <br>
-            <br>
-            <p>No Teams Created!</p>
-
+        <p>No teams!</p>
     {{/if}}
-{{/partial}}
 
+{{/partial}}
 
 {{> layout.hbs}}

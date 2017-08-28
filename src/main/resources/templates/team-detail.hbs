@@ -1,20 +1,26 @@
 {{#partial "content"}}
 
-    <div class="well">
 
-            <p><u>Team Name:</u></p>
-            <p>{{teamName}}</p>
-        <br>
-            <p><u>Team Description:</u></p>
-        <p>{{teamDesc}}</p>
+    <u>Here are all Members in this Team:</u>
+        <ul>
+            {{#each members}}
+                <li><a href="/teams/{{team.id}}/members/{{id}}"></a>
+                    Member Name: {{name}}
+                    <p>
+                        <small>
+                        <a href="/teams/{{team.id}}/members/{{id}}/update">Update this member</a><br>
+                        <a href="/teams/{{team.id}}/members/{{id}}/delete">Delete this member</a>
+                        </small>
+                    </p>
 
+                </li>
+            {{/each}}
+        </ul>
+    <hr noshade>
 
-            <p>
-                <a href="/teams/{{team.id}}/update">EDIT this team</a>
-                <br>
-                <a href="/teams/{{team.id}}/delete">DELETE this team</a>
-            </p>
+    <p><a href="/teams/{{team.id}}/update">Edit this team</a></p>
+    <p><a href="/teams/{{team.id}}/delete">DELETE this team (no undo)</a></p>
+    <hr noshade>
+{{/partial}}
 
-        </div>
-    {{/partial}}
 {{> layout.hbs}}
