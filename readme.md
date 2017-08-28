@@ -32,13 +32,22 @@ You will need Gradle installed on your device.
 |Edit the Previous Team | name: (no change), description: "Even more cool."| name: "Cool Team", description: "Even more Cool."|
 | ------------- | ------------- | ------------- |
 | Delete a Team | Delete | -deleted- |
-| Add a Member  | New Member Name: "John"| team name: "Cool Team", description: "Even more Cool", Member: "John"|
-| Delete a Member | Click John -> Delete| -John is deleted-|
+| ------------- | ------------- | ------------- |
+| Delete all Teams| Delete all Teams| -all teams deleted-|
+| ------------- | ------------- | ------------- |
+| Add a Member  | New Member Name: "John"| team name: "Cool Team", "description: 'Even more Cool'", Member: "John"|
+| ------------- | ------------- | ------------- |
+| Update a Member| Edit Member Name: "John" -> "Harris" | team name: "Cool Team", "description: 'even more cool.'", Member: "Harris".|
+| ------------- | ------------- | ------------- |
+| Delete a Member | Click Harris -> Delete| -Harris is deleted-|
+| ------------- | ------------- | ------------- |
+| Delete all Members | Delete All Members | -all members from all teams deleted- |
+| ------------- | ------------- | ------------- |
 
 ## Known Bugs
 ✦✦✦✦✦✦✦✦✦✦✦✦
 
-_Currently wip._
+_none as of now._
 
 ## Technologies Used
 ✦✦✦✦✦✦✦✦✦✦✦✦
